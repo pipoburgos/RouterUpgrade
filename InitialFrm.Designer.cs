@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // webBrowser1
@@ -38,37 +37,27 @@
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(727, 467);
+            this.webBrowser1.Size = new System.Drawing.Size(413, 200);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("http://192.168.1.1/cgi-bin/te_acceso_router.cgi", System.UriKind.Absolute);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(264, 383);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 52);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
             // 
             // InitialFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 467);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(413, 200);
             this.Controls.Add(this.webBrowser1);
             this.Name = "InitialFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormRouter";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.InitialFrm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+
         private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
