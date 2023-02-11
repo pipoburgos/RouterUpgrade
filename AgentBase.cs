@@ -123,9 +123,13 @@ namespace RouterUpgrade
                 //        Debug.WriteLine(stringResult);
                 //}
 
-                if (method == "/te_wifi.asp")
+                if (method == "GET")
                 {
                     if (response.StatusCode == HttpStatusCode.Found)
+                        MessageBox.Show("Error login");
+
+                    var stringResult = await response.Content.ReadAsStringAsync();
+                    if (!stringResult.Contains("var sessionKey = '"))
                         MessageBox.Show("Error login");
                 }
 

@@ -30,6 +30,8 @@ namespace RouterUpgrade
             {
                 try
                 {
+                    //await ObtenerCookieDeSesion(routerAgent);
+
                     await IniciarSesionConLaCookieYUsuarioYPassCifrados(routerAgent);
 
                     await ObtenerCookieDeSesion(routerAgent);
@@ -51,7 +53,7 @@ namespace RouterUpgrade
         private static async Task IniciarSesionConLaCookieYUsuarioYPassCifrados(AgentBase routerAgent)
         {
             await routerAgent
-                .PostFormUrlEncodedAsync<string>("/cgi-bin/te_acceso_router.cgi",
+                .PostFormUrlEncodedAsync<string>("/te_acceso_router.cgi",
                     new Dictionary<string, string>
                     {
                         {"curWebPage", "/te_wifi.asp"},
@@ -68,14 +70,10 @@ namespace RouterUpgrade
 
         private static async Task SubirFicheroFirmware(AgentBase routerAgent)
         {
-            // Subida del fichero ( CUIDADO!!! genera excepción cuando se corta la conexión en el reinicio del router)
             var fichero = ConfigurationManager.AppSettings["filePath"];
             var nombre = Path.GetFileName(fichero);
             var bytes = File.ReadAllBytes(fichero);
-            await routerAgent
-                .PostFormUrlEncodedAsync<string>("/te_uploadinfo.asp", nombre, bytes);
+            await routerAgent.PostFormUrlEncodedAsync<string>("/te_uploadinfo.asp", nombre, bytes);
         }
-
-
     }
 }
